@@ -31,9 +31,9 @@ function follow()
 
   function func:Tp()
     spawn(function()
-      local target = game.Players[_G.target].Character.HumanoidRootPart
       while _G.follow do
         task.wait()
+        local target = game.Players[_G.target].Character.HumanoidRootPart
         _G.part.CFrame = target.CFrame + Vector3.new(0, -27, 0)
         HumanoidRootPart.CFrame = target.CFrame + Vector3.new(0, -25, 0)
       end
