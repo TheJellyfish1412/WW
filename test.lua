@@ -55,25 +55,24 @@ MyFollow:Tp()
 while _G.AutoSkill do
   task.wait()
   local target, hp = getPlayerHp()
+  _G.target = target
+
   if (hp < 80) then
     local args = {
       [1] = "HealShot",
       [2] = HumanoidRootPart.CFrame,
       [3] = game.Players[target].Character.HumanoidRootPart.Position
     }
-    _G.target = target
     wait(.5)
     Combat.ActivateSkill:FireServer(unpack(args))
   end
 
-  local target, hp = getPlayerHp()
   if (hp < 80) then
     local args = {
       [1] = "GroupHeal",
       [2] = HumanoidRootPart.CFrame,
       [3] = game.Players[target].Character.HumanoidRootPart.Position
     }
-    _G.target = target
     wait(.5)
     Combat.ActivateSkill:FireServer(unpack(args))
   end
