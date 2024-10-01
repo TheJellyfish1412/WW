@@ -82,7 +82,7 @@ while (_G.AutoFarm) do
         LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
         if tick() - skill1 > 6 then
-          wait(1.5)
+          wait(3)
           skill1 = tick()
           game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
             "FireMeteor",
@@ -97,7 +97,7 @@ while (_G.AutoFarm) do
       local monDeadCF = CFrame.new(MobPart.Position)
       HumanoidRootPart.CFrame = monDeadCF
       _G.part.CFrame = monDeadCF + Vector3.new(0, -10, 0)
-      wait(1)
+      wait(2)
       game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
         "All",
         {
