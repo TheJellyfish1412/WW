@@ -3,16 +3,7 @@ local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
 local Combat = game:GetService("ReplicatedStorage").Events.Combat
 local MobsSpots = game:GetService("Workspace").Game.Regions.Dion.Areas.AncientRuins.MobsSpots
 
-if not _G.part then
-  _G.part = Instance.new("Part")
-end
-_G.part.Size = Vector3.new(50, 1, 50)
-_G.part.Anchored = true
-_G.part.Transparency = 0
-_G.part.Parent = game.Workspace
-
-
-local list = {
+local listMon = {
   {
     amount = 15,
     name = "FeralFiendSoldier",
@@ -28,15 +19,6 @@ local list = {
     HRP = "FeralFiend.HumanoidRootPart",
   },
 }
-
-function FindFirstModel(parent, type)
-  for _, child in ipairs(parent:GetChildren()) do
-      if child:IsA(type) then
-          return child
-      end
-  end
-  return nil
-end
 
 function FindByPath(root, path)
   local pathParts = string.split(path, ".")
@@ -55,7 +37,7 @@ end
 _G.AutoFarm = true
 while (_G.AutoFarm) do
   wait()
-  for _, MobData in pairs(list) do
+  for _, MobData in pairs(listMon) do
     if not _G.AutoFarm then break end
     wait()
     local count = 0
@@ -96,3 +78,5 @@ while (_G.AutoFarm) do
     end
   end
 end
+
+print("Pass")
