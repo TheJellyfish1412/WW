@@ -52,63 +52,66 @@ while (_G.AutoFarm) do
     local count = 0
     print("pass3")
     for _,mob in pairs(MobsSpots[MobData["name"]]:GetChildren()) do
-      if not _G.AutoFarm then break end
-      local HP = FindByPath(mob, MobData["HP"])
-      local MobPart = FindByPath(mob, MobData["HRP"])
-      local BodyHitbox = FindByPath(mob, MobData["BodyHitbox"])
-      local CharacterId = MobPart:GetAttribute("CharacterId")
+      pcall(function()
+        if not _G.AutoFarm then break end
+        local HP = FindByPath(mob, MobData["HP"])
+        local MobPart = FindByPath(mob, MobData["HRP"])
+        local BodyHitbox = FindByPath(mob, MobData["BodyHitbox"])
+        local CharacterId = MobPart:GetAttribute("CharacterId")
 
-      if (LocalPlayer.Character.RightHand:FindFirstChild("RightGrip")) then
-        LocalPlayer.Character.RightHand.RightGrip.Part1 = nil
-      elseif (LocalPlayer.Character.Weapon.Handle:FindFirstChild("Handle")) then
-        LocalPlayer.Character.Weapon.Handle.Handle.Part1 = nil
-      end
-      wait()
-
-      BodyHitbox.Size = Vector3.new(60, 60, 60)
-      LocalPlayer.Character.Weapon.Handle.Anchored = true
-      LocalPlayer.Character.Weapon.Handle.FirePoint.Position = Vector3.new(0,0,0)
-
-      if (tonumber(HP.Text) > 0) then
-        count = count + 1
-      end
-      
-      while tonumber(HP.Text) > 0 and _G.AutoFarm do
-        task.wait()
-        
-        local cframe = CFrame.new(MobPart.Position)
-        _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
-        HumanoidRootPart.CFrame = cframe + Vector3.new(0, -20, 0)
-        LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
-
-        if tick() - skill1 > 5 then
-          wait(2)
-          skill1 = tick()
-          game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
-            "FireMeteor",
-            HumanoidRootPart.CFrame,
-            MobPart.Position
-          })
-          wait(2)
-        else
-          _G.Click()
+        if (LocalPlayer.Character.RightHand:FindFirstChild("RightGrip")) then
+          LocalPlayer.Character.RightHand.RightGrip.Part1 = nil
+        elseif (LocalPlayer.Character.Weapon.Handle:FindFirstChild("Handle")) then
+          LocalPlayer.Character.Weapon.Handle.Handle.Part1 = nil
         end
-      end
+        wait()
 
-      local monDeadCF = CFrame.new(MobPart.Position)
-      HumanoidRootPart.CFrame = monDeadCF
-      _G.part.CFrame = monDeadCF + Vector3.new(0, -10, 0)
-      wait(2)
-      game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
-        "All",
-        {
-          [CharacterId] = "0"
-        }
-      })
+        BodyHitbox.Size = Vector3.new(60, 60, 60)
+        LocalPlayer.Character.Weapon.Handle.Anchored = true
+        LocalPlayer.Character.Weapon.Handle.FirePoint.Position = Vector3.new(0,0,0)
 
-      if (count >= MobData["amount"]) then
-        break
-      end
+        if (tonumber(HP.Text) > 0) then
+          count = count + 1
+        end
+        
+        while tonumber(HP.Text) > 0 and _G.AutoFarm do
+          task.wait()
+          
+          local cframe = CFrame.new(MobPart.Position)
+          _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
+          HumanoidRootPart.CFrame = cframe + Vector3.new(0, -20, 0)
+          LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
+
+          if tick() - skill1 > 6 then
+            wait(1.5)
+            skill1 = tick()
+            game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
+              "FireMeteor",
+              HumanoidRootPart.CFrame,
+              MobPart.Position
+            })
+            wait(1.5)
+          else
+            _G.Click()
+          end
+        end
+
+        local monDeadCF = CFrame.new(MobPart.Position)
+        HumanoidRootPart.CFrame = monDeadCF
+        _G.part.CFrame = monDeadCF + Vector3.new(0, -10, 0)
+        wait(1)
+        game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
+          "All",
+          {
+            [CharacterId] = "0"
+          }
+        })
+        wait(1)
+
+        if (count >= MobData["amount"]) then
+          break
+        end
+      end)
     end
   end
   
