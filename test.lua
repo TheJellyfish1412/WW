@@ -1,3 +1,4 @@
+local VirtualInputManager = game:GetService("VirtualInputManager")
 local LocalPlayer = game.Players.LocalPlayer
 local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
 local Combat = game:GetService("ReplicatedStorage").Events.Combat
