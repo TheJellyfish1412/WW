@@ -69,16 +69,13 @@ while (_G.AutoFarm) do
       if (tonumber(HP.Text) > 0) then
         count = count + 1
       end
-
-      
-      local cframe = CFrame.new(MobPart.Position)
-      _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
-      HumanoidRootPart.CFrame = cframe + Vector3.new(0, -25, 0)
       
       while tonumber(HP.Text) > 0 and _G.AutoFarm do
         task.wait()
         
         local cframe = CFrame.new(MobPart.Position)
+        _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
+        HumanoidRootPart.CFrame = cframe + Vector3.new(0, -25, 0)
         LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
         _G.Click()
