@@ -3,6 +3,7 @@ local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
 local Combat = game:GetService("ReplicatedStorage").Events.Combat
 local MobsSpots = game:GetService("Workspace").Game.Regions.Dion.Areas.AncientRuins.MobsSpots
 
+print("pass1")
 local listMon = {
   {
     amount = 15,
@@ -34,6 +35,7 @@ function FindByPath(root, path)
   return current
 end
 
+print("pass2")
 _G.AutoFarm = true
 while (_G.AutoFarm) do
   wait()
@@ -41,6 +43,7 @@ while (_G.AutoFarm) do
     if not _G.AutoFarm then break end
     wait()
     local count = 0
+    print("pass3")
     for _,mob in pairs(MobsSpots[MobData["name"]]:GetChildren()) do
       if not _G.AutoFarm then break end
       local HP = FindByPath(mob, MobData["HP"])
