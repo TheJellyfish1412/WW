@@ -40,7 +40,9 @@ _G.AutoFarm = true
 local skill1 = tick()
 while (_G.AutoFarm) do
   wait()
-  HumanoidRootPart.CFrame = CFrame.new(5704.8330078125, 86.257568359375, -1452.57958984375)
+  local npcCF = CFrame.new(5704.8330078125, 86.257568359375, -1452.57958984375)
+  HumanoidRootPart.CFrame = npcCF
+  _G.part.CFrame = npcCF + Vector3.new(0, -27, 0)
   wait(2)
   game:GetService("ReplicatedStorage").Events.Quest.GrantQuest:FireServer("MarshFiendPurge")
 
@@ -106,7 +108,9 @@ while (_G.AutoFarm) do
     end
   end
   
-  HumanoidRootPart.CFrame = CFrame.new(5704.8330078125, 86.257568359375, -1452.57958984375)
+  local npcCF = CFrame.new(5704.8330078125, 86.257568359375, -1452.57958984375)
+  HumanoidRootPart.CFrame = npcCF
+  _G.part.CFrame = npcCF + Vector3.new(0, -27, 0)
   wait(2)
   game:GetService("ReplicatedStorage").Events.Quest.CompleteQuest:FireServer("MarshFiendPurge")
 end
