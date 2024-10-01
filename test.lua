@@ -53,6 +53,7 @@ while (_G.AutoFarm) do
       local HP = FindByPath(mob, MobData["HP"])
       local MobPart = FindByPath(mob, MobData["HRP"])
       local BodyHitbox = FindByPath(mob, MobData["BodyHitbox"])
+      local CharacterId = MobPart:GetAttribute("CharacterId")
 
       if (LocalPlayer.Character.RightHand:FindFirstChild("RightGrip")) then
         LocalPlayer.Character.RightHand.RightGrip.Part1 = nil
@@ -68,17 +69,30 @@ while (_G.AutoFarm) do
       if (tonumber(HP.Text) > 0) then
         count = count + 1
       end
+
+      
+      local cframe = CFrame.new(MobPart.Position)
+      _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
+      HumanoidRootPart.CFrame = cframe + Vector3.new(0, -25, 0)
       
       while tonumber(HP.Text) > 0 and _G.AutoFarm do
         task.wait()
         
         local cframe = CFrame.new(MobPart.Position)
-        _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
-        HumanoidRootPart.CFrame = cframe + Vector3.new(0, -25, 0)
         LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
         _G.Click()
       end
+
+      HumanoidRootPart.CFrame = cframe
+      wait(1)
+      game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
+        "All",
+        {
+          [CharacterId] = "0"
+        }
+      })
+
       if (count >= MobData["amount"]) then
         break
       end
