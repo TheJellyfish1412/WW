@@ -105,7 +105,6 @@ while (_G.AutoFarm) do
             -- })
             VirtualInputManager:SendMouseMoveEvent(430, 100, x)
             wait()
-            wait()
             VirtualInputManager:SendKeyEvent(true, 49, false, x)
             wait()
             VirtualInputManager:SendKeyEvent(false, 49, false, x)
