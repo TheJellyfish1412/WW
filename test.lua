@@ -92,7 +92,7 @@ while (_G.AutoFarm) do
           LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
           wait(1)
-          
+
           VirtualInputManager:SendKeyEvent(true, 101, false, x)
           wait()
           VirtualInputManager:SendKeyEvent(false, 101, false, x)
@@ -106,8 +106,8 @@ while (_G.AutoFarm) do
           HumanoidRootPart.CFrame = cframe + Vector3.new(0, -20, 0)
           LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
-          if tick() - skill1 > 6 then
-            wait(1.5)
+          if tick() - skill1 > 5 then
+            wait(2)
             skill1 = tick()
             -- game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
             --   "FireMeteor",
@@ -117,7 +117,7 @@ while (_G.AutoFarm) do
             VirtualInputManager:SendKeyEvent(true, 49, false, x)
             wait()
             VirtualInputManager:SendKeyEvent(false, 49, false, x)
-            wait(1.5)
+            wait(2)
           else
             _G.Click()
           end
