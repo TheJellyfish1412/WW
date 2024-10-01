@@ -4,6 +4,18 @@ local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
 local Combat = game:GetService("ReplicatedStorage").Events.Combat
 local MobsSpots = game:GetService("Workspace").Game.Regions.Dion.Areas.AncientRuins.MobsSpots
 
+local function findGuiElement(parent, targetType)
+  for _, descendant in pairs(parent:GetDescendants()) do
+      if descendant:IsA(targetType) then
+          return descendant
+      end
+  end
+  return nil
+end
+
+local starterGui = LocalPlayer:WaitForChild("PlayerGui")
+local x = findGuiElement(starterGui, "GuiObject")
+
 print("pass1")
 local listMon = {
   {
@@ -91,6 +103,9 @@ while (_G.AutoFarm) do
             --   HumanoidRootPart.CFrame,
             --   MobPart.Position
             -- })
+            VirtualInputManager:SendMouseMoveEvent(430, 100, x)
+            wait()
+            wait()
             VirtualInputManager:SendKeyEvent(true, 49, false, x)
             wait()
             VirtualInputManager:SendKeyEvent(false, 49, false, x)
