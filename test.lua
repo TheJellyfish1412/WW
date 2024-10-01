@@ -93,8 +93,9 @@ while (_G.AutoFarm) do
         end
       end
 
-      HumanoidRootPart.CFrame = CFrame.new(MobPart.Position)
-      _G.part.CFrame = cframe + Vector3.new(0, -10, 0)
+      local monDeadCF = CFrame.new(MobPart.Position)
+      HumanoidRootPart.CFrame = monDeadCF
+      _G.part.CFrame = monDeadCF + Vector3.new(0, -10, 0)
       wait(1)
       game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
         "All",
