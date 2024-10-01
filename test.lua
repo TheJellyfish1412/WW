@@ -84,6 +84,9 @@ while (_G.AutoFarm) do
         LocalPlayer.Character.Weapon.Handle.FirePoint.Position = Vector3.new(0,0,0)
 
         if (tonumber(HP.Text) > 0) then
+          VirtualInputManager:SendKeyEvent(true, 101, false, x)
+          wait()
+          VirtualInputManager:SendKeyEvent(false, 101, false, x)
           count = count + 1
         end
         
@@ -103,12 +106,10 @@ while (_G.AutoFarm) do
             --   HumanoidRootPart.CFrame,
             --   MobPart.Position
             -- })
-            VirtualInputManager:SendMouseMoveEvent(430, 100, x)
-            wait()
             VirtualInputManager:SendKeyEvent(true, 49, false, x)
             wait()
             VirtualInputManager:SendKeyEvent(false, 49, false, x)
-            wait(2)
+            wait(1.5)
           else
             _G.Click()
           end
@@ -117,7 +118,7 @@ while (_G.AutoFarm) do
         local monDeadCF = CFrame.new(MobPart.Position)
         HumanoidRootPart.CFrame = monDeadCF
         _G.part.CFrame = monDeadCF + Vector3.new(0, -10, 0)
-        wait(1)
+        wait(1.5)
         -- game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
         --   "All",
         --   {
@@ -131,7 +132,7 @@ while (_G.AutoFarm) do
         VirtualInputManager:SendKeyEvent(true, 103, false, x)
         wait()
         VirtualInputManager:SendKeyEvent(false, 103, false, x)
-        wait(1)
+        wait(1.5)
 
         if (count >= MobData["amount"]) then
           break
