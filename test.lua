@@ -1,6 +1,7 @@
 local LocalPlayer = game.Players.LocalPlayer
 local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
 local Combat = game:GetService("ReplicatedStorage").Events.Combat
+local MobsSpots = game:GetService("Workspace").Game.Regions.Dion.Areas.AncientRuins.MobsSpots
 
 if not _G.part then
   _G.part = Instance.new("Part")
@@ -57,8 +58,8 @@ while (_G.AutoFarm) do
   for _, MobData in pairs(list) do
     if not _G.AutoFarm then break end
     wait()
-    count = 0
-    for _,mob in pairs(game:GetService("Workspace").Game.Regions.Dion.Areas.AncientRuins.MobsSpots[MobData["name"]]:GetChildren()) do
+    local count = 0
+    for _,mob in pairs(MobsSpots[MobData["name"]]:GetChildren()) do
       if not _G.AutoFarm then break end
       local HP = FindByPath(mob, MobData["HP"])
       local MobPart = FindByPath(mob, MobData["HRP"])
