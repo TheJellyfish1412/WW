@@ -82,13 +82,14 @@ while (_G.AutoFarm) do
         LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
         if tick() - skill1 > 5 then
-          wait(3)
+          wait(2)
           skill1 = tick()
           game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
             "FireMeteor",
             HumanoidRootPart.CFrame,
             MobPart.Position
           })
+          wait(2)
         else
           _G.Click()
         end
