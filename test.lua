@@ -108,7 +108,7 @@ while (_G.AutoFarm) do
             VirtualInputManager:SendKeyEvent(true, 49, false, x)
             wait()
             VirtualInputManager:SendKeyEvent(false, 49, false, x)
-            wait(1.5)
+            wait(2)
           else
             _G.Click()
           end
