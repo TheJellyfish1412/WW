@@ -1,5 +1,4 @@
 local success, errorMessage = pcall(function()
-
   local LocalPlayer = game.Players.LocalPlayer
   local camera = workspace.CurrentCamera
   local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
@@ -75,8 +74,7 @@ end)
 
 if not success then
   local errorString = tostring(errorMessage)
-  toclipboard(errorString)
+  print(errorString)
 else 
-  toclipboard("Pass")
+  print("Pass")
 end
-
