@@ -78,7 +78,7 @@ while (_G.AutoFarm) do
         
         local cframe = CFrame.new(MobPart.Position)
         _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
-        HumanoidRootPart.CFrame = cframe + Vector3.new(0, -25, 0)
+        HumanoidRootPart.CFrame = cframe + Vector3.new(0, -20, 0)
         LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
         if tick() - skill1 > 6.3 then
@@ -94,6 +94,7 @@ while (_G.AutoFarm) do
       end
 
       HumanoidRootPart.CFrame = cframe
+      _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
       wait(1)
       game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
         "All",
