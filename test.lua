@@ -84,10 +84,18 @@ while (_G.AutoFarm) do
         LocalPlayer.Character.Weapon.Handle.FirePoint.Position = Vector3.new(0,0,0)
 
         if (tonumber(HP.Text) > 0) then
+          count = count + 1
+          
+          local cframe = CFrame.new(MobPart.Position)
+          _G.part.CFrame = cframe + Vector3.new(0, -27, 0)
+          HumanoidRootPart.CFrame = cframe + Vector3.new(0, -20, 0)
+          LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
+
+          wait(1)
+          
           VirtualInputManager:SendKeyEvent(true, 101, false, x)
           wait()
           VirtualInputManager:SendKeyEvent(false, 101, false, x)
-          count = count + 1
         end
         
         while tonumber(HP.Text) > 0 and _G.AutoFarm do
