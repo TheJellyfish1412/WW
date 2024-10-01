@@ -39,6 +39,10 @@ print("pass2")
 _G.AutoFarm = true
 while (_G.AutoFarm) do
   wait()
+  HumanoidRootPart.CFrame = CFrame.new(5704.8330078125, 86.257568359375, -1452.57958984375)
+  wait(2)
+  game:GetService("ReplicatedStorage").Events.Quest.GrantQuest:FireServer("MarshFiendPurge")
+
   for _, MobData in pairs(listMon) do
     if not _G.AutoFarm then break end
     wait()
@@ -80,6 +84,10 @@ while (_G.AutoFarm) do
       end
     end
   end
+  
+  HumanoidRootPart.CFrame = CFrame.new(5704.8330078125, 86.257568359375, -1452.57958984375)
+  wait(2)
+  game:GetService("ReplicatedStorage").Events.Quest.CompleteQuest:FireServer("MarshFiendPurge")
 end
 
 print("Pass")
