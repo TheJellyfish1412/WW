@@ -37,6 +37,7 @@ end
 
 print("pass2")
 _G.AutoFarm = true
+local skill1 = tick()
 while (_G.AutoFarm) do
   wait()
   HumanoidRootPart.CFrame = CFrame.new(5704.8330078125, 86.257568359375, -1452.57958984375)
@@ -78,7 +79,16 @@ while (_G.AutoFarm) do
         HumanoidRootPart.CFrame = cframe + Vector3.new(0, -25, 0)
         LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
-        _G.Click()
+        if tick() - skill1 > 6.3 then
+          skill1 = tick()
+          game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
+            "FireMeteor",
+            HumanoidRootPart.CFrame,
+            MobPart.Position
+          })
+        else
+          _G.Click()
+        end
       end
 
       HumanoidRootPart.CFrame = cframe
