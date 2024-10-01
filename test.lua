@@ -81,7 +81,7 @@ while (_G.AutoFarm) do
         HumanoidRootPart.CFrame = cframe + Vector3.new(0, -20, 0)
         LocalPlayer.Character.Weapon.Handle.Position = BodyHitbox.Position
 
-        if tick() - skill1 > 6 then
+        if tick() - skill1 > 5 then
           wait(3)
           skill1 = tick()
           game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
