@@ -1,4 +1,4 @@
-_G.Main = function()
+local pass, msg = pcall(function()
   local LocalPlayer = game.Players.LocalPlayer
   local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
   local Combat = game:GetService("ReplicatedStorage").Events.Combat
@@ -84,4 +84,9 @@ _G.Main = function()
   end
 
   print("Pass")
+end)
+
+
+if not pass then
+  print(msg)
 end
