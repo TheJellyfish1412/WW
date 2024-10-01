@@ -52,7 +52,7 @@ while (_G.AutoFarm) do
     local count = 0
     print("pass3")
     for _,mob in pairs(MobsSpots[MobData["name"]]:GetChildren()) do
-      pcall(function()
+      -- pcall(function()
         if not _G.AutoFarm then break end
         local HP = FindByPath(mob, MobData["HP"])
         local MobPart = FindByPath(mob, MobData["HRP"])
@@ -111,7 +111,7 @@ while (_G.AutoFarm) do
         if (count >= MobData["amount"]) then
           break
         end
-      end)
+      -- end)
     end
   end
   
