@@ -85,11 +85,14 @@ while (_G.AutoFarm) do
           if tick() - skill1 > 6 then
             wait(1.5)
             skill1 = tick()
-            game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
-              "FireMeteor",
-              HumanoidRootPart.CFrame,
-              MobPart.Position
-            })
+            -- game:GetService("ReplicatedStorage").Events.Combat.ActivateSkill:FireServer({
+            --   "FireMeteor",
+            --   HumanoidRootPart.CFrame,
+            --   MobPart.Position
+            -- })
+            VirtualInputManager:SendKeyEvent(true, 49, false, x)
+            wait()
+            VirtualInputManager:SendKeyEvent(false, 49, false, x)
             wait(1.5)
           else
             _G.Click()
@@ -100,12 +103,19 @@ while (_G.AutoFarm) do
         HumanoidRootPart.CFrame = monDeadCF
         _G.part.CFrame = monDeadCF + Vector3.new(0, -10, 0)
         wait(1)
-        game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
-          "All",
-          {
-            [CharacterId] = "0"
-          }
-        })
+        -- game:GetService("ReplicatedStorage").Events.Drop.CollectDrop:FireServer({
+        --   "All",
+        --   {
+        --     [CharacterId] = "0"
+        --   }
+        -- })
+        VirtualInputManager:SendKeyEvent(true, 103, false, x)
+        wait()
+        VirtualInputManager:SendKeyEvent(false, 103, false, x)
+        wait()
+        VirtualInputManager:SendKeyEvent(true, 103, false, x)
+        wait()
+        VirtualInputManager:SendKeyEvent(false, 103, false, x)
         wait(1)
 
         if (count >= MobData["amount"]) then
